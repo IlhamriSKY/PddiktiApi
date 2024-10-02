@@ -14,14 +14,15 @@ To install this package, follow these steps:
     composer require ilhamrisky/pddiktiapi
     ```
 
-Usage
------
+2. Once installed, you can start using the `Api` class to interact with the PDDIKTI API. Here's an example of how to use the package: 
 
-Once installed, you can start using the `Api` class to interact with the PDDIKTI API. Here's an example of how to use the package:
+    ```php
+    use IlhamriSKY\PddiktiApi\Api;
 
-    $api = new \IlhamriSKY\PddiktiApi\Api();
-    $response = $api->searchAll('Ilham');
-    dd($response);
+    $pddikti = new Api();
+
+    $response = $pddikti->searchAll('Ilham');
+    ```
 
 Available Methods
 -----------------
