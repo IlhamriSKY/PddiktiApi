@@ -1,6 +1,6 @@
 <?php
 
-namespace Ilhamrisky\PddiktiApi;
+namespace IlhamriSKY\PddiktiApi;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\RequestException;
