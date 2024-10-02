@@ -1,7 +1,11 @@
 PDDIKTI API Laravel Package
 ===========================
 
-This Laravel package integrates with the PDDIKTI API, providing easy access to university, lecturer, and student data.
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/IlhamriSKY/PddiktiApi.svg?style=flat-square)](https://packagist.org/packages/IlhamriSKY/PddiktiApi)
+[![MIT Licensed](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE.md)
+[![Total Downloads](https://img.shields.io/packagist/dt/IlhamriSKY/PddiktiApi.svg?style=flat-square)](https://packagist.org/packages/IlhamriSKY/PddiktiApi)
+
+This Laravel package integrates with the **PDDIKTI (Pangkalan Data Pendidikan Tinggi)** API, providing easy access to university, lecturer, and student data. This package is an unofficial API built by the community, utilizing web scraping and API wrapping methods from the PDDIKTI web platform to offer programmatic access to the data.
 
 Installation
 ------------
