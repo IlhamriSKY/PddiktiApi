@@ -1,364 +1,415 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PDDIKTI API Laravel Package</title>
-</head>
-<body>
+PDDIKTI API Laravel Package
+===========================
 
-<h1>PDDIKTI API Laravel Package</h1>
+This Laravel package integrates with the PDDIKTI API, providing easy access to university, lecturer, and student data.
 
-<p>This Laravel package integrates with the PDDIKTI API, providing easy access to university, lecturer, and student data.</p>
+Installation
+------------
 
-<h2>Installation</h2>
+To install this package, follow these steps:
 
-<p>To install this package, follow these steps:</p>
+1.  Add the package to your Laravel project using Composer:
 
-<ol>
-    <li>Add the package to your Laravel project using Composer:</li>
-    <pre><code>composer require ilhamrisky/pddiktiapi</code></pre>
+    ```bash
+    composer require ilhamrisky/pddiktiapi
+    ```
 
-    <li>Publish the configuration file:</li>
-    <pre><code>php artisan vendor:publish --provider="IlhamriSKY\PddiktiApi\PddiktiApiServiceProvider" --tag="config"</code></pre>
+Usage
+-----
 
-    <li>Update your environment variables in the <code>.env</code> file:</li>
-    <pre><code>PDDIKTI_API_KEY=your-api-key-here
+Once installed, you can start using the `Api` class to interact with the PDDIKTI API. Here's an example of how to use the package:
 
-PDDIKTI_API_URL=https://pddikti.kemdikbud.go.id/api</code></pre>
+    ```php
+    $api = new \IlhamriSKY\PddiktiApi\Api();
+    $response = $api->searchAll('Ilham');
+    dd($response);
+    ```
 
-    <li>You're ready to use the PDDIKTI API in your Laravel application.</li>
+Available Methods
+-----------------
 
-</ol>
+The following methods are available in the API class:
 
-<h2>Usage</h2>
+*   **searchAll**: Search all categories by keyword.
 
-<p>Once installed, you can start using the <code>Api</code> class to interact with the PDDIKTI API. Here's an example of how to use the package:</p>
+    ```php
+    $response = $api->searchAll('keyword');
+    dd($response);
+    ```
 
-<pre><code>$api = new \IlhamriSKY\PddiktiApi\Api();
-$response = $api->searchAll('Ilham');
-dd($response);</code></pre>
+*   **searchMahasiswa**: Search for students by keyword.
+    ```php
+    $response = $api->searchMahasiswa('student name');
+    
+    dd($response);
+    ```
 
-<h2>Available Methods</h2>
+*   **searchDosen**: Search for lecturers by keyword.
+    ```php
+    $response = $api->searchDosen('lecturer name');
+    
+    dd($response);
+    ```
 
-<p>The following methods are available in the API class:</p>
+*   **searchPt**: Search for universities by keyword.
+    ```php
+    $response = $api->searchPt('university name');
+    
+    dd($response);
+    ```
 
-<ul>
-    <li><strong>searchAll</strong>: Search all categories by keyword.</li>
-    <pre><code>$response = $api->searchAll('keyword');
-dd($response);</code></pre>
+*   **searchProdi**: Search for study programs by keyword.
+    ```php
+    $response = $api->searchProdi('study program name');
+    
+    dd($response);
+    ```
 
-    <li><strong>searchMahasiswa</strong>: Search for students by keyword.</li>
-    <pre><code>$response = $api->searchMahasiswa('student name');
+*   **getDetailMahasiswa**: Get detailed information of a student by ID.
+    ```php
+    $response = $api->getDetailMahasiswa('student-id');
+    
+    dd($response);
+    ```
 
-dd($response);</code></pre>
+*   **getDosenProfile**: Get profile of a lecturer by ID.
 
-    <li><strong>searchDosen</strong>: Search for lecturers by keyword.</li>
-    <pre><code>$response = $api->searchDosen('lecturer name');
+    $response = $api->getDosenProfile('lecturer-id');
+    
+    dd($response);
 
-dd($response);</code></pre>
+*   **getDosenPenelitian**: Get research activities of a lecturer by ID.
 
-    <li><strong>searchPt</strong>: Search for universities by keyword.</li>
-    <pre><code>$response = $api->searchPt('university name');
+    $response = $api->getDosenPenelitian('lecturer-id');
+    
+    dd($response);
 
-dd($response);</code></pre>
+*   **getDosenPengabdian**: Get community service activities of a lecturer by ID.
 
-    <li><strong>searchProdi</strong>: Search for study programs by keyword.</li>
-    <pre><code>$response = $api->searchProdi('study program name');
+    $response = $api->getDosenPengabdian('lecturer-id');
+    
+    dd($response);
 
-dd($response);</code></pre>
+*   **getDosenKarya**: Get academic works of a lecturer by ID.
 
-    <li><strong>getDetailMahasiswa</strong>: Get detailed information of a student by ID.</li>
-    <pre><code>$response = $api->getDetailMahasiswa('student-id');
+    $response = $api->getDosenKarya('lecturer-id');
+    
+    dd($response);
 
-dd($response);</code></pre>
+*   **getDosenPaten**: Get patents of a lecturer by ID.
 
-    <li><strong>getDosenProfile</strong>: Get profile of a lecturer by ID.</li>
-    <pre><code>$response = $api->getDosenProfile('lecturer-id');
+    $response = $api->getDosenPaten('lecturer-id');
+    
+    dd($response);
 
-dd($response);</code></pre>
+*   **getDosenStudyHistory**: Get study history of a lecturer by ID.
 
-    <li><strong>getDosenPenelitian</strong>: Get research activities of a lecturer by ID.</li>
-    <pre><code>$response = $api->getDosenPenelitian('lecturer-id');
+    $response = $api->getDosenStudyHistory('lecturer-id');
+    
+    dd($response);
 
-dd($response);</code></pre>
+*   **getDosenTeachingHistory**: Get teaching history of a lecturer by ID.
 
-    <li><strong>getDosenPengabdian</strong>: Get community service activities of a lecturer by ID.</li>
-    <pre><code>$response = $api->getDosenPengabdian('lecturer-id');
+    $response = $api->getDosenTeachingHistory('lecturer-id');
+    
+    dd($response);
 
-dd($response);</code></pre>
+*   **getDetailPt**: Get detailed information of a university by ID.
 
-    <li><strong>getDosenKarya</strong>: Get academic works of a lecturer by ID.</li>
-    <pre><code>$response = $api->getDosenKarya('lecturer-id');
+    $response = $api->getDetailPt('university-id');
+    
+    dd($response);
 
-dd($response);</code></pre>
+*   **getProdiPt**: Get study programs of a university by ID and year.
 
-    <li><strong>getDosenPaten</strong>: Get patents of a lecturer by ID.</li>
-    <pre><code>$response = $api->getDosenPaten('lecturer-id');
+    $response = $api->getProdiPt('university-id', 2023);
+    
+    dd($response);
 
-dd($response);</code></pre>
+*   **getLogoPt**: Get the logo of a university by ID.
 
-    <li><strong>getDosenStudyHistory</strong>: Get study history of a lecturer by ID.</li>
-    <pre><code>$response = $api->getDosenStudyHistory('lecturer-id');
+    $response = $api->getLogoPt('university-id');
+    
+    dd($response);
 
-dd($response);</code></pre>
+*   **getRasioPt**: Get lecturer-student ratio of a university by ID.
 
-    <li><strong>getDosenTeachingHistory</strong>: Get teaching history of a lecturer by ID.</li>
-    <pre><code>$response = $api->getDosenTeachingHistory('lecturer-id');
+    $response = $api->getRasioPt('university-id');
+    
+    dd($response);
 
-dd($response);</code></pre>
+*   **getMahasiswaPt**: Get students of a university by ID.
 
-    <li><strong>getDetailPt</strong>: Get detailed information of a university by ID.</li>
-    <pre><code>$response = $api->getDetailPt('university-id');
+    $response = $api->getMahasiswaPt('university-id');
+    
+    dd($response);
 
-dd($response);</code></pre>
+*   **getWaktuStudiPt**: Get study time of a university by ID.
 
-    <li><strong>getProdiPt</strong>: Get study programs of a university by ID and year.</li>
-    <pre><code>$response = $api->getProdiPt('university-id', 2023);
+    $response = $api->getWaktuStudiPt('university-id');
+    
+    dd($response);
 
-dd($response);</code></pre>
+*   **getNameHistoriesPt**: Get name history of a university by ID.
 
-    <li><strong>getLogoPt</strong>: Get the logo of a university by ID.</li>
-    <pre><code>$response = $api->getLogoPt('university-id');
+    $response = $api->getNameHistoriesPt('university-id');
+    
+    dd($response);
 
-dd($response);</code></pre>
+*   **getCostRangePt**: Get cost range of a university by ID.
 
-    <li><strong>getRasioPt</strong>: Get lecturer-student ratio of a university by ID.</li>
-    <pre><code>$response = $api->getRasioPt('university-id');
+    $response = $api->getCostRangePt('university-id');
+    
+    dd($response);
 
-dd($response);</code></pre>
+*   **getGraduationRatePt**: Get graduation rate of a university by ID.
 
-    <li><strong>getMahasiswaPt</strong>: Get students of a university by ID.</li>
-    <pre><code>$response = $api->getMahasiswaPt('university-id');
+    $response = $api->getGraduationRatePt('university-id');
+    
+    dd($response);
 
-dd($response);</code></pre>
+*   **getJumlahProdiPt**: Get the number of study programs of a university by ID.
 
-    <li><strong>getWaktuStudiPt</strong>: Get study time of a university by ID.</li>
-    <pre><code>$response = $api->getWaktuStudiPt('university-id');
+    $response = $api->getJumlahProdiPt('university-id');
+    
+    dd($response);
 
-dd($response);</code></pre>
+*   **getJumlahMahasiswaPt**: Get the number of students of a university by ID.
 
-    <li><strong>getNameHistoriesPt</strong>: Get name history of a university by ID.</li>
-    <pre><code>$response = $api->getNameHistoriesPt('university-id');
+    $response = $api->getJumlahMahasiswaPt('university-id');
+    
+    dd($response);
 
-dd($response);</code></pre>
+*   **getJumlahDosenPt**: Get the number of lecturers of a university by ID.
 
-    <li><strong>getCostRangePt</strong>: Get cost range of a university by ID.</li>
-    <pre><code>$response = $api->getCostRangePt('university-id');
+    $response = $api->getJumlahDosenPt('university-id');
+    
+    dd($response);
 
-dd($response);</code></pre>
+*   **getSarprasFileNamePt**: Get the file name of sarpras of a university by ID.
 
-    <li><strong>getGraduationRatePt</strong>: Get graduation rate of a university by ID.</li>
-    <pre><code>$response = $api->getGraduationRatePt('university-id');
+    $response = $api->getSarprasFileNamePt('university-id');
+    
+    dd($response);
 
-dd($response);</code></pre>
+*   **getSarprasBlobPt**: Get the sarpras blob of a university by ID.
 
-    <li><strong>getJumlahProdiPt</strong>: Get the number of study programs of a university by ID.</li>
-    <pre><code>$response = $api->getJumlahProdiPt('university-id');
+    $response = $api->getSarprasBlobPt('university-id');
+    
+    dd($response);
 
-dd($response);</code></pre>
+*   **getDetailProdi**: Get detailed information of a study program by ID.
 
-    <li><strong>getJumlahMahasiswaPt</strong>: Get the number of students of a university by ID.</li>
-    <pre><code>$response = $api->getJumlahMahasiswaPt('university-id');
+    $response = $api->getDetailProdi('study-program-id');
+    
+    dd($response);
 
-dd($response);</code></pre>
+*   **getDescProdi**: Get description of a study program by ID.
 
-    <li><strong>getJumlahDosenPt</strong>: Get the number of lecturers of a university by ID.</li>
-    <pre><code>$response = $api->getJumlahDosenPt('university-id');
+    $response = $api->getDescProdi('study-program-id');
+    
+    dd($response);
 
-dd($response);</code></pre>
+*   **getNameHistoriesProdi**: Get name history of a study program by ID.
 
-    <li><strong>getSarprasFileNamePt</strong>: Get the file name of sarpras of a university by ID.</li>
-    <pre><code>$response = $api->getSarprasFileNamePt('university-id');
+    $response = $api->getNameHistoriesProdi('study-program-id');
+    
+    dd($response);
 
-dd($response);</code></pre>
+*   **getNumStudentsLecturersProdi**: Get the number of students and lecturers in a study program by ID.
 
-    <li><strong>getSarprasBlobPt</strong>: Get the sarpras blob of a university by ID.</li>
-    <pre><code>$response = $api->getSarprasBlobPt('university-id');
+    $response = $api->getNumStudentsLecturersProdi('study-program-id');
+    
+    dd($response);
 
-dd($response);</code></pre>
+*   **getCostRangeProdi**: Get the cost range of a study program by ID.
 
-    <li><strong>getDetailProdi</strong>: Get detailed information of a study program by ID.</li>
-    <pre><code>$response = $api->getDetailProdi('study-program-id');
+    $response = $api->getCostRangeProdi('study-program-id');
+    
+    dd($response);
 
-dd($response);</code></pre>
+*   **getDayaTampungProdi**: Get the capacity of a study program by ID.
 
-    <li><strong>getDescProdi</strong>: Get description of a study program by ID.</li>
-    <pre><code>$response = $api->getDescProdi('study-program-id');
+    $response = $api->getDayaTampungProdi('study-program-id');
+    
+    dd($response);
 
-dd($response);</code></pre>
+*   **getRasioDosenMahasiswaProdi**: Get lecturer-student ratio of a study program by ID.
 
-    <li><strong>getNameHistoriesProdi</strong>: Get name history of a study program by ID.</li>
-    <pre><code>$response = $api->getNameHistoriesProdi('study-program-id');
+    $response = $api->getRasioDosenMahasiswaProdi('study-program-id');
+    
+    dd($response);
 
-dd($response);</code></pre>
+*   **getGraduationRateProdi**: Get the graduation rate of a study program by ID.
 
-    <li><strong>getNumStudentsLecturersProdi</strong>: Get the number of students and lecturers in a study program by ID.</li>
-    <pre><code>$response = $api->getNumStudentsLecturersProdi('study-program-id');
+    $response = $api->getGraduationRateProdi('study-program-id');
+    
+    dd($response);
 
-dd($response);</code></pre>
+*   **getLogoProdi**: Get the logo of a study program by ID.
 
-    <li><strong>getCostRangeProdi</strong>: Get the cost range of a study program by ID.</li>
-    <pre><code>$response = $api->getCostRangeProdi('study-program-id');
+    $response = $api->getLogoProdi('study-program-id');
+    
+    dd($response);
 
-dd($response);</code></pre>
+*   **getHomebaseProdi**: Get the homebase ratio of a study program by ID and academic year.
 
-    <li><strong>getDayaTampungProdi</strong>: Get the capacity of a study program by ID.</li>
-    <pre><code>$response = $api->getDayaTampungProdi('study-program-id');
+    $response = $api->getHomebaseProdi('study-program-id', 2023);
+    
+    dd($response);
 
-dd($response);</code></pre>
+*   **getPenghitungRatioProdi**: Get the ratio counter of a study program by ID and academic year.
 
-    <li><strong>getRasioDosenMahasiswaProdi</strong>: Get lecturer-student ratio of a study program by ID.</li>
-    <pre><code>$response = $api->getRasioDosenMahasiswaProdi('study-program-id');
+    $response = $api->getPenghitungRatioProdi('study-program-id', 2023);
+    
+    dd($response);
 
-dd($response);</code></pre>
+*   **getDosenCountActive**: Get active lecturer count.
 
-    <li><strong>getGraduationRateProdi</strong>: Get the graduation rate of a study program by ID.</li>
-    <pre><code>$response = $api->getGraduationRateProdi('study-program-id');
+    $response = $api->getDosenCountActive();
+    
+    dd($response);
 
-dd($response);</code></pre>
+*   **getMahasiswaCountActive**: Get active student count.
 
-    <li><strong>getLogoProdi</strong>: Get the logo of a study program by ID.</li>
-    <pre><code>$response = $api->getLogoProdi('study-program-id');
+    $response = $api->getMahasiswaCountActive();
+    
+    dd($response);
 
-dd($response);</code></pre>
+*   **getProdiCount**: Get the count of study programs.
 
-    <li><strong>getHomebaseProdi</strong>: Get the homebase ratio of a study program by ID and academic year.</li>
-    <pre><code>$response = $api->getHomebaseProdi('study-program-id', 2023);
+    $response = $api->getProdiCount();
+    
+    dd($response);
 
-dd($response);</code></pre>
+*   **getPtCount**: Get the count of universities.
 
-    <li><strong>getPenghitungRatioProdi</strong>: Get the ratio counter of a study program by ID and academic year.</li>
-    <pre><code>$response = $api->getPenghitungRatioProdi('study-program-id', 2023);
+    $response = $api->getPtCount();
+    
+    dd($response);
 
-dd($response);</code></pre>
+*   **getDataDosenKeaktifan**: Get data visualization for lecturers' activeness.
 
-    <li><strong>getDosenCountActive</strong>: Get active lecturer count.</li>
-    <pre><code>$response = $api->getDosenCountActive();
+    $response = $api->getDataDosenKeaktifan();
+    
+    dd($response);
 
-dd($response);</code></pre>
+*   **getDataDosenBidang**: Get data visualization for lecturers' fields of study.
 
-    <li><strong>getMahasiswaCountActive</strong>: Get active student count.</li>
-    <pre><code>$response = $api->getMahasiswaCountActive();
+    $response = $api->getDataDosenBidang();
+    
+    dd($response);
 
-dd($response);</code></pre>
+*   **getDataDosenJenisKelamin**: Get data visualization for lecturers' gender distribution.
 
-    <li><strong>getProdiCount</strong>: Get the count of study programs.</li>
-    <pre><code>$response = $api->getProdiCount();
+    $response = $api->getDataDosenJenisKelamin();
+    
+    dd($response);
 
-dd($response);</code></pre>
+*   **getDataDosenJenjang**: Get data visualization for lecturers' academic levels.
 
-    <li><strong>getPtCount</strong>: Get the count of universities.</li>
-    <pre><code>$response = $api->getPtCount();
+    $response = $api->getDataDosenJenjang();
+    
+    dd($response);
 
-dd($response);</code></pre>
+*   **getDataDosenIkatan**: Get data visualization for lecturers' employment binding.
 
-    <li><strong>getDataDosenKeaktifan</strong>: Get data visualization for lecturers' activeness.</li>
-    <pre><code>$response = $api->getDataDosenKeaktifan();
+    $response = $api->getDataDosenIkatan();
+    
+    dd($response);
 
-dd($response);</code></pre>
+*   **getDataMahasiswaBidang**: Get data visualization for students' fields of study.
 
-    <li><strong>getDataDosenBidang</strong>: Get data visualization for lecturers' fields of study.</li>
-    <pre><code>$response = $api->getDataDosenBidang();
+    $response = $api->getDataMahasiswaBidang();
+    
+    dd($response);
 
-dd($response);</code></pre>
+*   **getDataMahasiswaJenisKelamin**: Get data visualization for students' gender distribution.
 
-    <li><strong>getDataDosenJenisKelamin</strong>: Get data visualization for lecturers' gender distribution.</li>
-    <pre><code>$response = $api->getDataDosenJenisKelamin();
+    $response = $api->getDataMahasiswaJenisKelamin();
+    
+    dd($response);
 
-dd($response);</code></pre>
+*   **getDataMahasiswaJenjang**: Get data visualization for students by educational level.
 
-    <li><strong>getDataDosenJenjang</strong>: Get data visualization for lecturers' academic levels.</li>
-    <pre><code>$response = $api->getDataDosenJenjang();
+    $response = $api->getDataMahasiswaJenjang();
+    
+    dd($response);
 
-dd($response);</code></pre>
+*   **getDataMahasiswaKelompokLembaga**: Get data visualization for students based on institutional groups.
 
-    <li><strong>getDataDosenIkatan</strong>: Get data visualization for lecturers' employment binding.</li>
-    <pre><code>$response = $api->getDataDosenIkatan();
+    $response = $api->getDataMahasiswaKelompokLembaga();
+    
+    dd($response);
 
-dd($response);</code></pre>
+*   **getDataMahasiswaStatus**: Get data visualization for students' status (active, inactive).
 
-    <li><strong>getDataMahasiswaBidang</strong>: Get data visualization for students' fields of study.</li>
-    <pre><code>$response = $api->getDataMahasiswaBidang();
+    $response = $api->getDataMahasiswaStatus();
+    
+    dd($response);
 
-dd($response);</code></pre>
+*   **getDataPtBentuk**: Get data visualization for universities' types.
 
-    <li><strong>getDataMahasiswaJenisKelamin</strong>: Get data visualization for students' gender distribution.</li>
-    <pre><code>$response = $api->getDataMahasiswaJenisKelamin();
+    $response = $api->getDataPtBentuk();
+    
+    dd($response);
 
-dd($response);</code></pre>
+*   **getDataPtAkreditasi**: Get data visualization for universities' accreditation levels.
 
-    <li><strong>getDataMahasiswaJenjang</strong>: Get data visualization for students by educational level.</li>
-    <pre><code>$response = $api->getDataMahasiswaJenjang();
+    $response = $api->getDataPtAkreditasi();
+    
+    dd($response);
 
-dd($response);</code></pre>
+*   **getDataPtKelompokPembina**: Get data visualization for universities' administrative overseer groups.
 
-    <li><strong>getDataMahasiswaKelompokLembaga</strong>: Get data visualization for students based on institutional groups.</li>
-    <pre><code>$response = $api->getDataMahasiswaKelompokLembaga();
+    $response = $api->getDataPtKelompokPembina();
+    
+    dd($response);
 
-dd($response);</code></pre>
+*   **getDataPtProvinsi**: Get data visualization for universities by province.
 
-    <li><strong>getDataMahasiswaStatus</strong>: Get data visualization for students' status (active, inactive).</li>
-    <pre><code>$response = $api->getDataMahasiswaStatus();
+    $response = $api->getDataPtProvinsi();
+    
+    dd($response);
 
-dd($response);</code></pre>
+*   **getDataProdiJenjang**: Get data visualization for academic programs by level.
 
-    <li><strong>getDataPtBentuk</strong>: Get data visualization for universities' types.</li>
-    <pre><code>$response = $api->getDataPtBentuk();
+    $response = $api->getDataProdiJenjang();
+    
+    dd($response);
 
-dd($response);</code></pre>
+*   **getDataProdiAkreditasi**: Get data visualization for academic programs by accreditation.
 
-    <li><strong>getDataPtAkreditasi</strong>: Get data visualization for universities' accreditation levels.</li>
-    <pre><code>$response = $api->getDataPtAkreditasi();
+    $response = $api->getDataProdiAkreditasi();
+    
+    dd($response);
 
-dd($response);</code></pre>
+*   **getDataProdiBidangIlmu**: Get data visualization for academic programs by field of study.
 
-    <li><strong>getDataPtKelompokPembina</strong>: Get data visualization for universities' administrative overseer groups.</li>
-    <pre><code>$response = $api->getDataPtKelompokPembina();
+    $response = $api->getDataProdiBidangIlmu();
+    
+    dd($response);
 
-dd($response);</code></pre>
+*   **getDataProdiKelompokPembina**: Get data visualization for academic programs grouped by administrative overseer.
 
-    <li><strong>getDataPtProvinsi</strong>: Get data visualization for universities by province.</li>
-    <pre><code>$response = $api->getDataPtProvinsi();
+    $response = $api->getDataProdiKelompokPembina();
+    
+    dd($response);
 
-dd($response);</code></pre>
+*   **getContributor**: Get the list of contributors.
 
-    <li><strong>getDataProdiJenjang</strong>: Get data visualization for academic programs by level.</li>
-    <pre><code>$response = $api->getDataProdiJenjang();
+    $response = $api->getContributor();
+    
+    dd($response);
 
-dd($response);</code></pre>
+*   **getNews**: Get the list of news articles.
 
-    <li><strong>getDataProdiAkreditasi</strong>: Get data visualization for academic programs by accreditation.</li>
-    <pre><code>$response = $api->getDataProdiAkreditasi();
+    $response = $api->getNews();
+    
+    dd($response);
 
-dd($response);</code></pre>
+*   **getBidangIlmuProdi**: Get the field of sciences.
 
-    <li><strong>getDataProdiBidangIlmu</strong>: Get data visualization for academic programs by field of study.</li>
-    <pre><code>$response = $api->getDataProdiBidangIlmu();
-
-dd($response);</code></pre>
-
-    <li><strong>getDataProdiKelompokPembina</strong>: Get data visualization for academic programs grouped by administrative overseer.</li>
-    <pre><code>$response = $api->getDataProdiKelompokPembina();
-
-dd($response);</code></pre>
-
-    <li><strong>getContributor</strong>: Get the list of contributors.</li>
-    <pre><code>$response = $api->getContributor();
-
-dd($response);</code></pre>
-
-    <li><strong>getNews</strong>: Get the list of news articles.</li>
-    <pre><code>$response = $api->getNews();
-
-dd($response);</code></pre>
-
-    <li><strong>getBidangIlmuProdi</strong>: Get the field of sciences.</li>
-    <pre><code>$response = $api->getBidangIlmuProdi();
-
-dd($response);</code></pre>
-
-</ul>
-
-</body>
-</html>
+    $response = $api->getBidangIlmuProdi();
+    
+    dd($response);
