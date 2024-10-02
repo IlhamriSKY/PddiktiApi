@@ -1,0 +1,29 @@
+{
+    "name": "ilhamrisky/pddiktiapi",
+    "description": "Laravel package for PDDIKTI API",
+    "type": "library",
+    "license": "MIT",
+    "require": {
+        "guzzlehttp/guzzle": "^7.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Ilhamrisky\\PddiktiApi\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Ilhamrisky\\PddiktiApi\\PddiktiApiServiceProvider"
+            ]
+        }
+    },
+    "authors": [
+        {
+            "name": "Ilham Riski Wibowo",
+            "email": "ilhamriskiwibowo@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
