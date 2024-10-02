@@ -21,7 +21,7 @@ To install this package, follow these steps:
 2. Once installed, you can start using the `Api` class to interact with the PDDIKTI API. Here's an example of how to use the package: 
 
     ```php
-    use IlhamriSKY\PddiktiApi\Api;
+    use Ilhamrisky\PddiktiApi\Api;
 
     $pddiktiapi = new Api();
 

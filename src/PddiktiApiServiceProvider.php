@@ -1,6 +1,6 @@
 <?php
 
-namespace IlhamriSKY\PddiktiApi;
+namespace Ilhamrisky\PddiktiApi;
 
 use Illuminate\Support\ServiceProvider;
 
