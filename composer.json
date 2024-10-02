@@ -1,5 +1,5 @@
 {
-    "name": "Ilhamrisky/pddiktiapi",
+    "name": "ilhamrisky/pddiktiapi",
     "description": "Laravel package for PDDIKTI API",
     "type": "library",
     "license": "MIT",
@@ -8,18 +8,18 @@
     },
     "autoload": {
         "psr-4": {
-            "Ilhamrisky\\PddiktiApi\\": "src/"
+            "ilhamrisky\\PddiktiApi\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Ilhamrisky\\PddiktiApi\\Tests\\": "tests/"
+            "ilhamrisky\\PddiktiApi\\Tests\\": "tests/"
         }
     },
     "extra": {
         "laravel": {
             "providers": [
-                "Ilhamrisky\\PddiktiApi\\PddiktiApiServiceProvider"
+                "ilhamrisky\\PddiktiApi\\PddiktiApiServiceProvider"
             ]
         }
     },
