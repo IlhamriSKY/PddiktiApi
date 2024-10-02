@@ -17,7 +17,7 @@ class PddiktiApiServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        // Register the Api class in the service container
+        // Register the Api class in the service container as a singleton
         $this->app->singleton(Api::class, function ($app) {
             return new Api();
         });
@@ -26,14 +26,13 @@ class PddiktiApiServiceProvider extends ServiceProvider
     /**
      * Bootstrap any application services.
      *
-     * This method is used to perform actions that should happen after
-     * all other services are registered. It can be used to publish
-     * configuration files, routes, and other package assets if needed.
+     * This method is used to perform actions after all services are registered.
+     * You can use this method to publish configuration files, routes, etc.
      *
      * @return void
      */
     public function boot()
     {
-        // No assets or configurations to publish, but you can add logic here if needed
+        // You can publish config, routes, or other assets here if needed in the future
     }
 }

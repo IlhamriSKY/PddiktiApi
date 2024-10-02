@@ -11,6 +11,11 @@
             "Ilhamrisky\\PddiktiApi\\": "src/"
         }
     },
+    "autoload-dev": {
+        "psr-4": {
+            "Ilhamrisky\\PddiktiApi\\Tests\\": "tests/"
+        }
+    },
     "extra": {
         "laravel": {
             "providers": [
