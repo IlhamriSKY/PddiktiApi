@@ -17,13 +17,11 @@ To install this package, follow these steps:
 Usage
 -----
 
-Once installed, you can start using the Api class to interact with the PDDIKTI API. Here's an example of how to use the package:
+Once installed, you can start using the `Api` class to interact with the PDDIKTI API. Here's an example of how to use the package:
 
-    ```php
     $api = new \IlhamriSKY\PddiktiApi\Api();
     $response = $api->searchAll('Ilham');
     dd($response);
-    ```
 
 Available Methods
 -----------------
